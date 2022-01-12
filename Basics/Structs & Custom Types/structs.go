@@ -2,6 +2,7 @@ package main
 import "fmt"
 
 //Note: Structs are used to store multiple values of different data types into a single variable.
+//Struts is the collection of fields
 
 type Person struct{
 	name string
