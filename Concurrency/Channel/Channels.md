@@ -20,3 +20,5 @@ channel_name := make(chan Type)
 	<-ch  //Reading the value of channel
 
 	//All the channels operations are blocking in default
+
+# When we close the channel, we can't send any data to that channel
