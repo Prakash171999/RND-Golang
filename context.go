@@ -1,8 +1,8 @@
 package main
- 
+
 import (
-    "context"
-    "fmt"
+	"context"
+	"fmt"
 	"time"
 )
 
@@ -10,13 +10,13 @@ func enrichContext(ctx context.Context) context.Context {
 	return context.WithValue(ctx, "request-id", "12345")
 }
 
-func doSomethingCool(ctx context.Context){
+func doSomethingCool(ctx context.Context) {
 	rID := ctx.Value("request-id")
 	for {
 		select {
 		case <-ctx.Done():
 			fmt.Println("Timed out")
-			return 
+			return
 		default:
 			fmt.Println("Doing something cool")
 		}
@@ -25,17 +25,17 @@ func doSomethingCool(ctx context.Context){
 	fmt.Println(rID)
 }
 
-func main(){
+func main() {
 	fmt.Println("Go context tutorial")
 	// ctx := context.Background()
 	// ctx := enrichContext(ctx)
 	// doSomethingCool(ctx)
 
-	ctx, cancel := context.WithTimeout(context.Background(), 2 * time.Second)
+	ctx, cancel := context.WithTimeout(context.Background(), 2*time.Second)
 	defer cancel()
 	ctx = enrichContext(ctx)
 	go doSomethingCool(ctx)
-	select{
+	select {
 	case <-ctx.Done():
 		fmt.Println("Oh no, I've exceeded the deadline")
 	}
