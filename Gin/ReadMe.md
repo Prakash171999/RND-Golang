@@ -41,3 +41,7 @@ c.JSON(http.StatusOK, gin.H{
     },
     "message": message
 })
+
+
+# IndentedJSON - Formats the JSON response
+c.IndentedJSON(http.StatusNotFound, gin.H{"message": "Book not found"})
