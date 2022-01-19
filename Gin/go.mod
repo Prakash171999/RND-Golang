@@ -1,4 +1,4 @@
-module root
+module example.com/api
 
 go 1.13
 
