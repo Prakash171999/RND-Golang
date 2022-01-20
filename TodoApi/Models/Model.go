@@ -6,6 +6,6 @@ type Todo struct {
 	Description string `json:"description"`
 }
 
-func (b *Todo) TableName() string {
+func (b *Todo) TableName() string { //
 	return "todo"
 }
