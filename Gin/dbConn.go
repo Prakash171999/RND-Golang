@@ -38,7 +38,7 @@ func main() {
 		)
 		id := c.Param("id")
 		row := db.QueryRow("select id, first_name, last_name from person where id = ?;", id)
-		err = row.Scan(&person.Id, &person.First_Name, &person.Last_Name) //Is it similar to BindJSON?
+		err = row.Scan(&person.Id, &person.First_Name, &person.Last_Name)
 		if err != nil {
 			// If no results send null
 			result = gin.H{
