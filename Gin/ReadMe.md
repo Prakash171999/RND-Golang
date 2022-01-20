@@ -18,9 +18,11 @@ func main() {
 	router.Run() // listen and serve on port 8080
 }
 
-# gin.Defalut() creates a Gin router with default middleware: logger & recover middleware
-# We can make handler using router.GET(path, handle) where path is the relative path, and handle is the handler function that takes *gin.Context as an argument. The handler function serves a JSON response with a status of 200.
-# And finally we can start the router using router.Run() //By defalut it listens on port 8080
+gin.Defalut() creates a Gin router with default middleware: logger & recover middleware
+
+We can make handler using router.GET(path, handle) where path is the relative path, and handle is the handler function that takes *gin.Context as an argument. The handler function serves a JSON response with a status of 200.
+
+And finally we can start the router using router.Run() //By defalut it listens on port 8080
 
 
 # H is shortcut for map[string]interface{}
