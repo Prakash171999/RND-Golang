@@ -3,8 +3,8 @@ package Models
 import (
 	"fmt"
 
-	"../Config"
 	_ "github.com/go-sql-driver/mysql" //
+	"todo-api/Config"
 )
 
 //fetch all todos
@@ -16,7 +16,7 @@ func GetAllTodos(todo *[]Todo) (err error) {
 }
 
 //insert a todo
-func CreateATodo(todo *Todo, id string) (err error) {
+func CreateATodo(todo *Todo) (err error) {
 	if err = Config.DB.Create(todo).Error; err != nil {
 		return err
 	}
@@ -34,7 +34,7 @@ func GetATodo(todo *Todo, id string) (err error) {
 //Update a todo
 func UpdateATodo(todo *Todo, id string) (err error) {
 	fmt.Println(todo)
-	Config.DB.Save(todo).Error
+	Config.DB.Save(todo)
 	return nil
 }
 

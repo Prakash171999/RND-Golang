@@ -3,11 +3,10 @@ package Controllers
 import (
 	"net/http"
 
-	"../Models"
 	"github.com/gin-gonic/gin"
+	"todo-api/Models"
 )
 
-//List all todos
 func GetTodos(c *gin.Context) {
 	var todo []Models.Todo
 	err := Models.GetAllTodos(&todo)
@@ -18,22 +17,20 @@ func GetTodos(c *gin.Context) {
 	}
 }
 
-//Create a todo
 func CreateATodo(c *gin.Context) {
 	var todo Models.Todo
 	c.BindJSON(&todo)
 	err := Models.CreateATodo(&todo)
 	if err != nil {
-		c.AbortWithStatus(http.Status)
+		c.AbortWithStatus(http.StatusNotFound)
 	} else {
 		c.JSON(http.StatusOK, todo)
 	}
 }
 
-//Get a single Todo with id
 func GetATodo(c *gin.Context) {
 	id := c.Params.ByName("id")
-	var todo Models.Todos
+	var todo Models.Todo
 	err := Models.GetATodo(&todo, id)
 	if err != nil {
 		c.AbortWithStatus(http.StatusNotFound)
@@ -42,7 +39,6 @@ func GetATodo(c *gin.Context) {
 	}
 }
 
-//Update the todo
 func UpdateATodo(c *gin.Context) {
 	var todo Models.Todo
 	id := c.Params.ByName("id")
@@ -59,9 +55,8 @@ func UpdateATodo(c *gin.Context) {
 	}
 }
 
-//Delete a todo
 func DeleteATodo(c *gin.Context) {
-	var todo Models.Todos
+	var todo Models.Todo
 	id := c.Params.ByName("id")
 	err := Models.DeleteATodo(&todo, id)
 	if err != nil {
