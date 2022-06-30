@@ -55,6 +55,7 @@ func UpdateATodo(c *gin.Context) {
 	}
 }
 
+//This is delete api for todo
 func DeleteATodo(c *gin.Context) {
 	var todo Models.Todo
 	id := c.Params.ByName("id")
